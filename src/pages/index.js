@@ -17,7 +17,10 @@ class IndexPost extends React.Component {
   render() {
 
     const { data } = this.props;
+console.log("data.data.allContentfulProduct.edges ", data.data.allContentfulProduct.edges);
 
+
+console.log("data.data.allContentfulBlogs.edges ", data.data.allContentfulBlogs.edges);
     return (
       <React.Fragment>
         <div className="row product-main">
@@ -36,7 +39,7 @@ class IndexPost extends React.Component {
                     starCount={5}
                     value={items.node.rating}
                   />
-                  <p>{items.node.details.childMarkdownRemark.excerpt}</p>
+                  <p>{items.node.productDescription.childMarkdownRemark.excerpt}</p>
                   <div className="row">
                     <div className="col-sm-4 align-self-center">
                       <span className="price">${items.node.price}</span>
@@ -47,7 +50,7 @@ class IndexPost extends React.Component {
                         className="Product snipcart-add-item"
                         data-item-id={items.node.slug}
                         data-item-price={items.node.price}
-                        data-item-image={items.node.image === null ? "" : items.node.image.fluid.src}
+                        data-item-image={items.node.image === null ? "" : ""}
                         data-item-name={items.node.name}
                         data-item-url={`/`}
                       >
@@ -87,7 +90,7 @@ export const query = graphql`
       edges{
         node{
           id
-          name
+          productName
           slug
           rating
           image {
@@ -102,9 +105,9 @@ export const query = graphql`
             }
           }
           price
-          details {
+          productDescription {
             childMarkdownRemark {
-              excerpt(pruneLength: 140)
+              html
             }
           }
         }

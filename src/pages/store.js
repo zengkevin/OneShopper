@@ -55,7 +55,7 @@ class IndexPost extends React.Component {
                     starCount={5}
                     value={items.node.rating}
                   />
-                  <p>{items.node.details.childMarkdownRemark.excerpt}</p>
+                  <p>{items.node.productDescription.childMarkdownRemark.excerpt}</p>
                   <div className="row">
                     <div className="col-sm-4 align-self-center">
                       <span className="price">${items.node.price}</span>
@@ -98,11 +98,11 @@ export default IndexPage
 
 export const query = graphql`
   query StoreQuery {
-    allContentfulProduct{
-      edges{
-        node{
+    allContentfulProduct {
+      edges {
+        node {
           id
-          name
+          productName
           slug
           rating
           image {
@@ -114,9 +114,9 @@ export const query = graphql`
             }
           }
           price
-          details {
+          productDescription {
             childMarkdownRemark {
-              excerpt(pruneLength: 140)
+              html
             }
           }
         }

@@ -8,17 +8,13 @@ import SEO from "../components/seo"
 const ProductDetails = data => (
   < Layout >
 
-    <SEO title={data.data.contentfulProduct.name} keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title={data.data.contentfulProduct.productName} keywords={[`gatsby`, `application`, `react`]} />
     <div className="container details-page">
       <div className="product-details">
         <div className="Product-Screenshot">
           {data.data.contentfulProduct.productMorePhotos === null ? <div className="no-image">No Image</div> :
             <Tabs>
-              {data.data.contentfulProduct.productMorePhotos.map(items => (
-                <TabPanel key={items.id}>
-                  <Tab><img src={items.fixed.src} /></Tab>
-                </TabPanel>
-              ))}
+
               <TabList>
                 {data.data.contentfulProduct.productMorePhotos.map(items => (
                   <Tab key={items.id}><img src={items.fixed.src} /></Tab>
@@ -28,7 +24,7 @@ const ProductDetails = data => (
 
         </div>
         <div>
-          <h2>{data.data.contentfulProduct.name}</h2>
+          <h2>{data.data.contentfulProduct.productName}</h2>
         </div>
         <StarRatingComponent
           name="rate1"
@@ -46,7 +42,7 @@ const ProductDetails = data => (
               data-item-id={data.data.contentfulProduct.slug}
               data-item-price={data.data.contentfulProduct.price}
               data-item-image={data.data.contentfulProduct.image === null ? "" : data.data.contentfulProduct.image.fixed.src}
-              data-item-name={data.data.contentfulProduct.name}
+              data-item-name={data.data.contentfulProduct.productName}
               data-item-url={`/`}
             >
               <i className="fas fa-tags" />
@@ -56,7 +52,7 @@ const ProductDetails = data => (
         </div>
         <div
           dangerouslySetInnerHTML={{
-            __html: data.data.contentfulProduct.details.childMarkdownRemark.html
+            __html: data.data.contentfulProduct.productDescription.childMarkdownRemark.html
           }}
         />
       </div>
@@ -68,31 +64,25 @@ export default ProductDetails
 
 export const query = graphql`
   query ProductDetailsQuery($slug: String!) {
-      contentfulProduct(slug: {eq: $slug }) {
+    contentfulProduct(slug: {eq: $slug }) {
       id
-      name
-    slug
+      productName
+      slug
       image {
-      fixed(width: 1120, height: 500) {
-      width
+        fixed(width: 1120, height: 500) {
+          width
           height
-    src
-    srcSet
+          src
+          srcSet
+        }
+      }
+      price
+      productDescription {
+        childMarkdownRemark {
+          html
+        }
+      }
+      rating
+    }
   }
-}
-price
-      details {
-      childMarkdownRemark {
-    html
-  }
-}
-productMorePhotos {
-  id
-  fixed(width: 1120, height: 600){
-    src
-  }
-}
-rating
-}
-}
 `

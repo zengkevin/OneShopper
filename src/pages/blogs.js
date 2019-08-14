@@ -105,7 +105,7 @@ export const query = graphql`
             }
             description {
               childMarkdownRemark {
-                excerpt(pruneLength: 250)
+                html
               }
             }
             featureImage {
