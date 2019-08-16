@@ -50,7 +50,7 @@ console.log("data.data.allContentfulBlogs.edges ", data.data.allContentfulBlogs.
                         className="Product snipcart-add-item"
                         data-item-id={items.node.slug}
                         data-item-price={items.node.price}
-                        data-item-image={items.node.image === null ? "" : ""}
+                        data-item-image={items.node.image === null ? "" : items.node.image[0].fluid.src}
                         data-item-name={items.node.name}
                         data-item-url={`/`}
                       >
