@@ -27,7 +27,7 @@ console.log("data.data.allContentfulBlogs.edges ", data.data.allContentfulBlogs.
           {data.data.allContentfulProduct.edges.map(items => (
             <div className="Catalogue__item col-sm-12 col-md-6 col-lg-4" key={items.node.id}>
               <div className="details_List">
-                {items.node.image === null ? <div className="no-image">No Image</div> : <Img sizes={items.node.image.fluid} />}
+                {items.node.image === null ? <div className="no-image">No Image</div> : <Img sizes={items.node.image[0].fluid} />}
 
                 <div className="details_inner">
 
