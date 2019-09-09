@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import "../css/font-awesome.css"
@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.css"
 import "../css/style.css"
 import SEO from "../components/seo"
 import logo from "../images/oneshopper-logo.png"
-
-
+import { Link } from "gatsby-plugin-intl"
+import Language from "./language"
 
 const Header = ({ siteTitle }) => (
   <header className="site-header">
@@ -15,7 +15,7 @@ const Header = ({ siteTitle }) => (
     </SEO>
     <div className="container">
       <div className="row">
-        <div className="col-sm-12 col-md-4 align-self-center">
+        <div className="col-sm-12 col-md-2 align-self-center">
           <Link className="header-logo" to="/"><img src={logo}></img></Link>
         </div>
         <div className="col-sm-12 col-md-8 align-self-center">
@@ -44,9 +44,11 @@ const Header = ({ siteTitle }) => (
             </div>
           </nav>
         </div>
+        <div className="col-sm-12 col-md-2 align-self-right">
+          <Language />
+        </div>
       </div>
     </div>
-
   </header >
 )
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,6 +7,7 @@ import Banner from "../components/banner"
 import LatestBlogs from "../components/latestBlog"
 import Countdown from "../components/countdown"
 import StarRatingComponent from 'react-star-rating-component';
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class IndexPost extends React.Component {
   constructor(props) {
@@ -17,10 +18,9 @@ class IndexPost extends React.Component {
   render() {
 
     const { data } = this.props;
-console.log("data.data.allContentfulProduct.edges ", data.data.allContentfulProduct.edges);
 
+    console.log("data.intl", data.intl);
 
-console.log("data.data.allContentfulBlogs.edges ", data.data.allContentfulBlogs.edges);
     return (
       <React.Fragment>
         <div className="row product-main">
@@ -71,7 +71,11 @@ console.log("data.data.allContentfulBlogs.edges ", data.data.allContentfulBlogs.
 const IndexPage = data => (
 
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO
+      lang={data.intl.locale}
+      title={data.intl.formatMessage({ id: "title" })}
+      keywords={[`gatsby`, `application`, `react`]}
+    />
     <Banner BannerData={data.data.allContentfulHeaderBanner.edges} />
     <LatestBlogs data={data.data.allContentfulBlogs} />
     <div className="container">
@@ -82,7 +86,7 @@ const IndexPage = data => (
   </Layout>
 )
 
-export default IndexPage
+export default injectIntl(IndexPage)
 
 export const query = graphql`
   query AboutQuery {
