@@ -1,9 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import StarRatingComponent from 'react-star-rating-component';
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class IndexPost extends React.Component {
   constructor(props) {
@@ -87,14 +88,18 @@ class IndexPost extends React.Component {
 const IndexPage = data => (
 
   <Layout>
-    <SEO title="Store" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO
+      lang={data.intl.locale}
+      title={data.intl.formatMessage({ id: "store" })}
+      keywords={[`gatsby`, `application`, `react`]}
+    />
     <div className="container store-page">
       <IndexPost data={data}></IndexPost>
     </div>
   </Layout>
 )
 
-export default IndexPage
+export default injectIntl(IndexPage)
 
 export const query = graphql`
   query StoreQuery {

@@ -1,8 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class BlogsPost extends React.Component {
   constructor(props) {
@@ -71,14 +72,18 @@ class BlogsPost extends React.Component {
 const Blogs = data => (
 
   <Layout>
-    <SEO title="Blogs" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO
+        lang={data.intl.locale}
+        title={data.intl.formatMessage({ id: "blogs" })}
+        keywords={[`gatsby`, `application`, `react`]}
+    />
     <div className="container blog-page">
       <BlogsPost data={data}></BlogsPost>
     </div>
   </Layout>
 )
 
-export default Blogs
+export default injectIntl(Blogs)
 
 export const query = graphql`
   query BlogsQuery {

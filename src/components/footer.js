@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class Footer extends React.Component {
     render() {
@@ -11,18 +12,18 @@ class Footer extends React.Component {
                             <section id="nav_menu-8" className="widget widget_nav_menu">
                                 <div className="menu-main-container">
                                     <ul id="menu-main" className="menu">
-                                        <li><Link to="/about">About</Link></li>
-                                        <li><Link to="/blogs">Blogs</Link></li>
-                                        <li><Link to="/store">Store</Link></li>
-                                        <li><Link to="/contact-us">Contact</Link></li>
-                                        <li><Link to="/copyright">Copyright</Link></li>
+                                        <li><Link to="/about"><FormattedMessage id="about" /></Link></li>
+                                        <li><Link to="/blogs"><FormattedMessage id="blogs" /></Link></li>
+                                        <li><Link to="/store"><FormattedMessage id="store" /></Link></li>
+                                        <li><Link to="/contact-us"><FormattedMessage id="contact" /></Link></li>
+                                        <li><Link to="/copyright"><FormattedMessage id="copyright" /></Link></li>
                                     </ul>
                                 </div>
                             </section>
                         </div>
                         <div className="footer-bottom social-right-menu ">
                             <div className="site-info">
-                                ©2019 Oneshopper. All rights reserved.
+                                ©2019 ITHome <FormattedMessage id="all_rights_reserved" />.
                             </div>
                         </div>
                     </div>

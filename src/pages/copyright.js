@@ -1,18 +1,24 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class Copyright extends React.Component {
     render() {
+
         return (
             < Layout >
-                <SEO title="Copyright" keywords={[`gatsby`, `application`, `react`]} />
+                <SEO
+                    lang={this.props.intl.locale}
+                    title={this.props.intl.formatMessage({ id: "copyright" })}
+                    keywords={[`gatsby`, `application`, `react`]}
+                />
                 <div className="site-About">
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-12">
                                 <h2>Copyright</h2>
-                                <p>© 2019 Oneshopper. All rights reserved.</p>
+                                <p>© 2019 ITHome <FormattedMessage id="all_rights_reserved" />.</p>
                             </div>
                         </div>
                     </div>
@@ -22,4 +28,4 @@ class Copyright extends React.Component {
     }
 }
 
-export default Copyright
+export default injectIntl(Copyright)

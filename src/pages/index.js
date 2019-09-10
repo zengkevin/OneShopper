@@ -19,8 +19,6 @@ class IndexPost extends React.Component {
 
     const { data } = this.props;
 
-    console.log("data.intl", data.intl);
-
     return (
       <React.Fragment>
         <div className="row product-main">
@@ -79,7 +77,7 @@ const IndexPage = data => (
     <Banner BannerData={data.data.allContentfulHeaderBanner.edges} />
     <LatestBlogs data={data.data.allContentfulBlogs} />
     <div className="container">
-      <div className="text-center"><h2 className="with-underline">Latest Items</h2></div>
+      <div className="text-center"><h2 className="with-underline">{data.intl.formatMessage({ id: "latestitems" })}</h2></div>
       <IndexPost data={data}></IndexPost>
     </div>
     <Countdown data={data.data.contentfulDealCountDown} />

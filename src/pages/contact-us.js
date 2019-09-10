@@ -1,30 +1,36 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class Contact extends React.Component {
     render() {
+
         return (
             < Layout >
-                <SEO title="Contact Us" keywords={[`gatsby`, `application`, `react`]} />
+                <SEO
+                    lang={this.props.intl.locale}
+                    title={this.props.intl.formatMessage({ id: "contact" })}
+                    keywords={[`gatsby`, `application`, `react`]}
+                />
                 <div className="Contact-us">
                     <div className="container">
                         {/* To make form work, use your own formspree credentials in action="" */}
                         <form action="https://formspree.io/youremail@domain.com" method="POST" name="contact">
                             <div>
-                                <label>Your Name: </label>
+                                <label><FormattedMessage id="your_name" />: </label>
                                 <input type="text" name="name" />
                             </div>
                             <div>
-                                <label>Your Email: </label>
+                                <label><FormattedMessage id="your_email" />: </label>
                                 <input type="email" name="email" />
                             </div>
                             <div>
-                                <label>Message: </label>
+                                <label><FormattedMessage id="message" />: </label>
                                 <textarea name="message"></textarea>
                             </div>
                             <div>
-                                <button type="submit">Send</button>
+                                <button type="submit"><FormattedMessage id="send" /></button>
                             </div>
                         </form>
                     </div>
@@ -34,4 +40,4 @@ class Contact extends React.Component {
     }
 }
 
-export default Contact
+export default injectIntl(Contact)

@@ -6,13 +6,13 @@ import "bootstrap/dist/css/bootstrap.css"
 import "../css/style.css"
 import SEO from "../components/seo"
 import logo from "../images/oneshopper-logo.png"
-import { Link } from "gatsby-plugin-intl"
+
 import Language from "./language"
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+
 
 const Header = ({ siteTitle }) => (
   <header className="site-header">
-    <SEO>
-    </SEO>
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-2 align-self-center">
@@ -22,19 +22,19 @@ const Header = ({ siteTitle }) => (
           <nav>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link className="nav-link" to="/">Home</Link>
+                <Link className="nav-link" to="/"><FormattedMessage id="home" /></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/blogs">Blogs</Link>
+                <Link className="nav-link" to="/blogs"><FormattedMessage id="blogs" /></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/store">Store</Link>
+                <Link className="nav-link" to="/store"><FormattedMessage id="store" /></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">About</Link>
+                <Link className="nav-link" to="/about"><FormattedMessage id="about" /></Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact-us">Contact</Link>
+                <Link className="nav-link" to="/contact-us"><FormattedMessage id="contact" /></Link>
               </li>
             </ul>
             <div className="header-cart">
