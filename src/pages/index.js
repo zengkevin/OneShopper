@@ -156,6 +156,12 @@ export const query = graphql`
           title
           slug
           featureImage {
+            title
+            file {
+              contentType
+              fileName
+              url
+            }
             fluid(maxWidth: 1120) {
               base64
               aspectRatio
