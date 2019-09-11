@@ -30,7 +30,7 @@ class IndexPost extends React.Component {
                 <div className="details_inner">
 
                   <h2>
-                    <Link to={`/${items.node.slug}`}>{items.node.name}</Link>
+                    <Link to={`/${items.node.slug}`}>{items.node.productName}</Link>
                   </h2>
                   <StarRatingComponent
                     name="rate1"
@@ -80,7 +80,7 @@ const IndexPage = data => (
       <div className="text-center"><h2 className="with-underline">{data.intl.formatMessage({ id: "latestitems" })}</h2></div>
       <IndexPost data={data}></IndexPost>
     </div>
-    <Countdown data={data.data.contentfulDealCountDown} />
+    {/* <Countdown data={data.data.contentfulDealCountDown} /> */}
   </Layout>
 )
 
