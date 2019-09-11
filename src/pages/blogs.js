@@ -42,7 +42,7 @@ class BlogsPost extends React.Component {
       <React.Fragment>
         <ul className="blog-list" onScroll={this.onScrollEvent}>
           {data.data.allContentfulBlogs.edges.slice(0, NoOfPost).map(items => (
-            <li>
+            <li key={items.node.slug}>
               <div className="post-item template-square columned">
                 <div className="post-thumbnail">
                   <Img sizes={items.node.featureImage.fluid} />
