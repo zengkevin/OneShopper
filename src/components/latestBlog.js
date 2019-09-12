@@ -23,22 +23,22 @@ export default class LatestBlogs extends React.Component {
                         </li> */}
                     {data.edges.map(items => (
                         <li key={items.node.id}>
+                            <Link to={items.node.slug}>
                             <div className="inner">
-                                <Link to={items.node.slug}>{items.node.title}</Link>
-                                    { items.node.featureImage.file.contentType.indexOf("video") >= 0 ? 
-                                        <div>
-                                            <iframe
-                                            src={items.node.featureImage.file.url}
-                                            title={items.node.title}
-                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                            frameBorder="0"
-                                            webkitallowfullscreen="true"
-                                            mozallowfullscreen="true"
-                                            allowFullScreen
-                                            />
-                                        </div> : <Img sizes={items.node.featureImage.fluid} /> 
-                                    }
+                                {items.node.featureImage.file.contentType.indexOf("video") >= 0 ? 
+                                    <iframe
+                                    src={items.node.featureImage.file.url}
+                                    title={items.node.title}
+                                    allow=""
+                                    frameBorder="0"
+                                    webkitallowfullscreen="true"
+                                    mozallowfullscreen="true"
+                                    allowFullScreen
+                                    /> : <Img sizes={items.node.featureImage.fluid} />
+                                }
+                                <h2>{items.node.title}</h2>
                             </div>
+                            </Link>
                         </li>
                     ))}
                 </ul>

@@ -13,8 +13,20 @@ const BlogDetails = data => (
     < Layout >
         <SEO title={data.data.contentfulBlogs.title} keywords={[`gatsby`, `ecommerce`, `react`, `contentFul`, `Snipcart`]} />
         <div className="blogs-page">
-            <div className="post-thumbnail">
-                <Img sizes={data.data.contentfulBlogs.featureImage.fluid} />
+            <div className="post-thumbnail" > <p></p> <p></p>
+            <p align="center">
+                {data.data.contentfulBlogs.featureImage.file.contentType.indexOf("video") >= 0 ? 
+                    <iframe
+                    src={data.data.contentfulBlogs.featureImage.file.url}
+                    title={data.data.contentfulBlogs.title}
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    frameBorder="0"
+                    webkitallowfullscreen="true"
+                    mozallowfullscreen="true"
+                    allowFullScreen
+                    /> : <Img sizes={data.data.contentfulBlogs.featureImage.fluid} />
+                }
+            </p>
             </div>
             <div className="container">
                 <div className="post-details">
@@ -24,7 +36,9 @@ const BlogDetails = data => (
                         {data.data.contentfulBlogs.publicData}
                     </div>
                     <div className="author">
-                        <Img sizes={data.data.contentfulBlogs.author.photo.fixed} />
+                        {data.data.contentfulBlogs.author.photo === null ? 
+                            <div className="no-image">No Image</div> : 
+                            <Img sizes={data.data.contentfulBlogs.author.photo.fluid} />}
                         <strong className="name">{data.data.contentfulBlogs.author.name}</strong>
                     </div>
                     <div
@@ -56,15 +70,18 @@ export const query = graphql`
             slug
             publicData(formatString: "MMMM D, YYYY")
             author {
-            name
-            photo {
-                fixed(width: 50, height: 50) {
-                width
-                height
-                src
-                srcSet
+                name
+                photo {
+                    fluid {
+                        base64
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                    }
                 }
-            }
             }
             description {
                 childMarkdownRemark {
@@ -72,7 +89,13 @@ export const query = graphql`
                 }
             }
             featureImage {
-                fluid {
+                title
+                file {
+                  contentType
+                  fileName
+                  url
+                }
+                fluid(maxWidth: 1120) {
                     base64
                     aspectRatio
                     src
@@ -80,8 +103,8 @@ export const query = graphql`
                     srcWebp
                     srcSetWebp
                     sizes
-                  }
+                }
+            }
         }
     }
-}
 `
