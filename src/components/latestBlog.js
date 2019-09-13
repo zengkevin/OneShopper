@@ -21,22 +21,22 @@ export default class LatestBlogs extends React.Component {
                             </video>
                         </div>
                         </li> */}
-                    {data.edges.map(items => (
-                        <li key={items.node.id}>
-                            <Link to={items.node.slug}>
+                    {data.edges.map(item => (
+                        <li key={item.node.id}>
+                            <Link to={item.node.slug}>
                             <div className="inner">
-                                {items.node.featureImage.file.contentType.indexOf("video") >= 0 ? 
+                                {item.node.featureImage.file.contentType.indexOf("video") >= 0 ? 
                                     <iframe
-                                    src={items.node.featureImage.file.url}
-                                    title={items.node.title}
+                                    src={item.node.featureImage.file.url}
+                                    title={item.node.title}
                                     allow=""
                                     frameBorder="0"
                                     webkitallowfullscreen="true"
                                     mozallowfullscreen="true"
                                     allowFullScreen
-                                    /> : <Img sizes={items.node.featureImage.fluid} />
+                                    /> : <Img sizes={item.node.featureImage.fluid} />
                                 }
-                                <h2>{items.node.title}</h2>
+                                <h2>{item.node.title}</h2>
                             </div>
                             </Link>
                         </li>

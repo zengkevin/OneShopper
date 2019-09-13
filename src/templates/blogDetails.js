@@ -13,21 +13,7 @@ const BlogDetails = data => (
     < Layout >
         <SEO title={data.data.contentfulBlogs.title} keywords={[`gatsby`, `ecommerce`, `react`, `contentFul`, `Snipcart`]} />
         <div className="blogs-page">
-            <div className="post-thumbnail" > <p></p> <p></p>
-            <p align="center">
-                {data.data.contentfulBlogs.featureImage.file.contentType.indexOf("video") >= 0 ? 
-                    <iframe
-                    src={data.data.contentfulBlogs.featureImage.file.url}
-                    title={data.data.contentfulBlogs.title}
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    frameBorder="0"
-                    webkitallowfullscreen="true"
-                    mozallowfullscreen="true"
-                    allowFullScreen
-                    /> : <Img sizes={data.data.contentfulBlogs.featureImage.fluid} />
-                }
-            </p>
-            </div>
+
             <div className="container">
                 <div className="post-details">
                     <h2 className="title">{data.data.contentfulBlogs.title}</h2>
@@ -41,6 +27,29 @@ const BlogDetails = data => (
                             <Img sizes={data.data.contentfulBlogs.author.photo.fluid} />}
                         <strong className="name">{data.data.contentfulBlogs.author.name}</strong>
                     </div>
+
+                    <div className="post-thumbnail" >
+                        {data.data.contentfulBlogs.featureImage.file.contentType.indexOf("video") >= 0 ? 
+                            <div className="inner" align="center">
+                                <h2>{data.data.contentfulBlogs.featureImage.title}</h2>
+                                <video controls preload="auto">
+                                    <source src={data.data.contentfulBlogs.featureImage.file.url} 
+                                            type={data.data.contentfulBlogs.featureImage.file.contentType} />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            : <Img sizes={data.data.contentfulBlogs.featureImage.fluid} />
+                        }
+                    </div>
+
+                    {data.data.contentfulBlogs.morePhotos != null && 
+                        <div className="grid-3-col">
+                        {data.data.contentfulBlogs.morePhotos.map((item, index) => (
+                            <div key={index}><Img className="grid-image" sizes={item.fluid} /></div>
+                        ))}
+                        </div>
+                    } 
+
                     <div
                         dangerouslySetInnerHTML={{
                             __html: data.data.contentfulBlogs.description.childMarkdownRemark.html
@@ -83,11 +92,6 @@ export const query = graphql`
                     }
                 }
             }
-            description {
-                childMarkdownRemark {
-                    html
-                }
-            }
             featureImage {
                 title
                 file {
@@ -103,6 +107,19 @@ export const query = graphql`
                     srcWebp
                     srcSetWebp
                     sizes
+                }
+            }
+            morePhotos {
+                fluid {
+                  src
+                  srcSet
+                  sizes
+                  aspectRatio
+                }
+            }
+            description {
+                childMarkdownRemark {
+                    html
                 }
             }
         }

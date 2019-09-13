@@ -22,34 +22,34 @@ class IndexPost extends React.Component {
     return (
       <React.Fragment>
         <div className="row product-main">
-          {data.data.allContentfulProduct.edges.map(items => (
-            <div className="Catalogue__item col-sm-12 col-md-6 col-lg-4" key={items.node.id}>
+          {data.data.allContentfulProduct.edges.map(item => (
+            <div className="Catalogue__item col-sm-12 col-md-6 col-lg-4" key={item.node.id}>
               <div className="details_List">
-                {items.node.image === null ? <div className="no-image">No Image</div> : <Img sizes={items.node.image[0].fluid} />}
+                {item.node.image === null ? <div className="no-image">No Image</div> : <Img sizes={item.node.image[0].fluid} />}
 
                 <div className="details_inner">
 
                   <h2>
-                    <Link to={`/${items.node.slug}`}>{items.node.productName}</Link>
+                    <Link to={`/${item.node.slug}`}>{item.node.productName}</Link>
                   </h2>
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}
-                    value={items.node.rating}
+                    value={item.node.rating}
                   />
-                  <p>{items.node.productDescription.childMarkdownRemark.excerpt}</p>
+                  <p>{item.node.productDescription.childMarkdownRemark.excerpt}</p>
                   <div className="row">
                     <div className="col-sm-4 align-self-center">
-                      <span className="price">${items.node.price}</span>
+                      <span className="price">${item.node.price}</span>
                     </div>
                     <div className="col-sm-8 text-right align-self-center">
                       <a
                         href="#"
                         className="Product snipcart-add-item"
-                        data-item-id={items.node.slug}
-                        data-item-price={items.node.price}
-                        data-item-image={items.node.image === null ? "" : items.node.image[0].fluid.src}
-                        data-item-name={items.node.name}
+                        data-item-id={item.node.slug}
+                        data-item-price={item.node.price}
+                        data-item-image={item.node.image === null ? "" : item.node.image[0].fluid.src}
+                        data-item-name={item.node.name}
                         data-item-url={`/`}
                       >
                         <i className="fas fa-shopping-bag" />Add to Cart

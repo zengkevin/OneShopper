@@ -1,7 +1,7 @@
 import React from "react"
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+//import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import StarRatingComponent from 'react-star-rating-component';
-
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -11,18 +11,22 @@ const ProductDetails = data => (
     <SEO title={data.data.contentfulProduct.productName} keywords={[`gatsby`, `application`, `react`]} />
     <div className="container details-page">
       <div className="product-details">
-        <div className="Product-Screenshot">
-          {data.data.contentfulProduct.productMorePhotos === null ? <div className="no-image">No Image</div> :
-            <Tabs>
 
-              <TabList>
-                {data.data.contentfulProduct.productMorePhotos.map(items => (
-                  <Tab key={items.id}><img src={items.fixed.src} /></Tab>
-                ))}
-              </TabList>
-            </Tabs>}
+        {data.data.contentfulProduct.image === null ? <div className="no-image">No Image</div> :
 
-        </div>
+          data.data.contentfulProduct.image[0].file.contentType.indexOf("video") >= 0 ? 
+              <div className="inner" align="center">
+                  <h2>{data.data.contentfulProduct.image[0].title}</h2>
+                  <video controls preload="auto">
+                      <source src={data.data.contentfulProduct.image[0].file.url} 
+                              type={data.data.contentfulProduct.image[0].file.contentType} />
+                      Your browser does not support the video tag.
+                  </video>
+              </div>
+              : <Img sizes={data.data.contentfulProduct.image[0].fluid} />
+          
+        }
+
         <div>
           <h2>{data.data.contentfulProduct.productName}</h2>
         </div>
@@ -41,7 +45,7 @@ const ProductDetails = data => (
               className="Product snipcart-add-item"
               data-item-id={data.data.contentfulProduct.slug}
               data-item-price={data.data.contentfulProduct.price}
-              data-item-image={data.data.contentfulProduct.image === null ? "" : data.data.contentfulProduct.image.fixed.src}
+              data-item-image={data.data.contentfulProduct.image === null ? "" : data.data.contentfulProduct.image[0].fluid.src}
               data-item-name={data.data.contentfulProduct.productName}
               data-item-url={`/`}
             >
@@ -55,6 +59,16 @@ const ProductDetails = data => (
             __html: data.data.contentfulProduct.productDescription.childMarkdownRemark.html
           }}
         />
+
+        <div className="Product-Screenshot">
+          {data.data.contentfulProduct.productMorePhotos != null && 
+            <div className="grid-3-col">
+              {data.data.contentfulProduct.productMorePhotos.map((item, index) => (
+                  <div key={index}><Img className="grid-image" sizes={item.fluid} /></div>
+              ))}
+            </div>
+          } 
+        </div>
       </div>
     </div>
   </Layout >
@@ -69,11 +83,17 @@ export const query = graphql`
       productName
       slug
       image {
-        fixed(width: 1120, height: 500) {
-          width
-          height
+        title
+        file {
+          contentType
+          fileName
+          url
+        }
+        fluid {
+          aspectRatio
           src
           srcSet
+          sizes
         }
       }
       price
@@ -83,6 +103,17 @@ export const query = graphql`
         }
       }
       rating
+      productMorePhotos {
+        fluid {
+          src
+          srcSet
+          sizes
+          aspectRatio
+        }
+      }
+      quantity
+      sizetypecolor
+      tags
     }
   }
 `
