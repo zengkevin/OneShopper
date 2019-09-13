@@ -5,15 +5,14 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Banner from "../components/banner"
 import LatestBlogs from "../components/latestBlog"
-import Countdown from "../components/countdown"
+//import Countdown from "../components/countdown"
 import StarRatingComponent from 'react-star-rating-component';
-import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+import { injectIntl, Link } from "gatsby-plugin-intl"
 
 class IndexPost extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
+  //constructor(props) {
+  //  super(props);
+  //}
 
   render() {
 

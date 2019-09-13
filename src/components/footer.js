@@ -1,6 +1,6 @@
 import React from "react"
 //import { Link } from "gatsby"
-import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+import { Link, FormattedMessage } from "gatsby-plugin-intl"
 
 class Footer extends React.Component {
     render() {

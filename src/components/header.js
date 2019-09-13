@@ -4,11 +4,11 @@ import React from "react"
 import "../css/font-awesome.css"
 import "bootstrap/dist/css/bootstrap.css"
 import "../css/style.css"
-import SEO from "../components/seo"
+//import SEO from "../components/seo"
 import logo from "../images/legendage-logo.png"
 
 import Language from "./language"
-import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+import { Link, FormattedMessage } from "gatsby-plugin-intl"
 
 
 const Header = ({ siteTitle }) => (
@@ -16,7 +16,7 @@ const Header = ({ siteTitle }) => (
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-2 align-self-center">
-          <Link className="header-logo" to="/"><img src={logo}></img></Link>
+          <Link className="header-logo" to="/"><img src={logo} alt="logo"></img></Link>
         </div>
         <div className="col-sm-12 col-md-8 align-self-center">
           <nav>
