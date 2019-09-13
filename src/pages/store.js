@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import StarRatingComponent from 'react-star-rating-component';
 import { injectIntl, Link } from "gatsby-plugin-intl"
+import { graphql } from "gatsby"
 
 class IndexPost extends React.Component {
   constructor(props) {

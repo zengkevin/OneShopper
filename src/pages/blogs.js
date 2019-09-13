@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { injectIntl, Link } from "gatsby-plugin-intl"
+import { graphql } from "gatsby"
 
 class BlogsPost extends React.Component {
   constructor(props) {

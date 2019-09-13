@@ -8,6 +8,7 @@ import LatestBlogs from "../components/latestBlog"
 //import Countdown from "../components/countdown"
 import StarRatingComponent from 'react-star-rating-component';
 import { injectIntl, Link } from "gatsby-plugin-intl"
+import { graphql } from "gatsby"
 
 class IndexPost extends React.Component {
   //constructor(props) {
