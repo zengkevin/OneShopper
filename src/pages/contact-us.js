@@ -4,7 +4,15 @@ import SEO from "../components/seo"
 import { injectIntl, FormattedMessage } from "gatsby-plugin-intl"
 
 class Contact extends React.Component {
+
     render() {
+
+        var quantity = 0;
+        if(this.props.location.search) {
+            let search = window.location.search;
+            let params = new URLSearchParams(search);
+            quantity = params.get('quantity');
+        }
 
         return (
             < Layout >
@@ -27,7 +35,9 @@ class Contact extends React.Component {
                             </div>
                             <div>
                                 <label><FormattedMessage id="message" />: </label>
-                                <textarea name="message"></textarea>
+                                <textarea name="message">
+                                { quantity>0 && "I would like to buy " + quantity + " lip sticks."}
+                                </textarea>
                             </div>
                             <div>
                                 <button type="submit"><FormattedMessage id="send" /></button>

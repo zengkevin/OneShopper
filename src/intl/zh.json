@@ -21,5 +21,8 @@
   "YMBunitprice": "人民币单价",
   "YMB": "人民币总价",
   "CADunitprice": "加元单价",
-  "CAD": "加元总价"
+  "CAD": "加元总价",
+  "buy": "购买",
+  "inchina": "于中国",
+  "incanada": "于加拿大"
 }

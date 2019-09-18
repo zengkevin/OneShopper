@@ -21,5 +21,8 @@
   "YMBunitprice": "YMB Unit Price",
   "YMB": "YMB",
   "CADunitprice": "CAD Unit Price",
-  "CAD": "CAD"
+  "CAD": "CAD",
+  "buy": "Buy",
+  "inchina": "In China",
+  "incanada": "In Canada"
 }

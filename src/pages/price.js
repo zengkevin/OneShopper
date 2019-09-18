@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { injectIntl, FormattedMessage } from "gatsby-plugin-intl"
+import { injectIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
 
 const buttonStyles = {
     fontSize: "13px",
@@ -16,20 +16,20 @@ const buttonStyles = {
 }
 
 const priceList = [
-    {q: 1, ymbp: 188, cadp: 40, sku: "sku_FpLQHDwejr73hI"},
-    {q: 2, ymbp: 188, cadp: 40, sku: "sku_FpLQHDwejr73hI"},
-    {q: 3, ymbp: 188, cadp: 40, sku: "sku_FpLQHDwejr73hI"},
-    {q: 4, ymbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
-    {q: 5, ymbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
-    {q: 6, ymbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
-    {q: 7, ymbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
-    {q: 8, ymbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
-    {q: 9, ymbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
-    {q: 10, ymbp: 125, cadp: 28, sku: "sku_FpkIkoBT4UlEvy"},
-    {q: 50, ymbp: 110, cadp: 25, sku: "sku_FpkI1Wybk5Mfyf"},
-    {q: 100, ymbp: 110, cadp: 25, sku: "sku_FpkI1Wybk5Mfyf"},
-    {q: 200, ymbp: 110, cadp: 25, sku: "sku_FpkI1Wybk5Mfyf"},
-    {q: 300, ymbp: 80, cadp: 18, sku: "sku_FpkJkMWrGW1wpR"}
+    {q: 1, rmbp: 188, cadp: 40, sku: "sku_FpLQHDwejr73hI"},
+    {q: 2, rmbp: 188, cadp: 40, sku: "sku_FpLQHDwejr73hI"},
+    {q: 3, rmbp: 188, cadp: 40, sku: "sku_FpLQHDwejr73hI"},
+    {q: 4, rmbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
+    {q: 5, rmbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
+    {q: 6, rmbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
+    {q: 7, rmbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
+    {q: 8, rmbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
+    {q: 9, rmbp: 150, cadp: 32.5, sku: "sku_FpkHVYMaLKxFJZ"},
+    {q: 10, rmbp: 125, cadp: 28, sku: "sku_FpkIkoBT4UlEvy"},
+    {q: 50, rmbp: 110, cadp: 25, sku: "sku_FpkI1Wybk5Mfyf"},
+    {q: 100, rmbp: 110, cadp: 25, sku: "sku_FpkI1Wybk5Mfyf"},
+    {q: 200, rmbp: 110, cadp: 25, sku: "sku_FpkI1Wybk5Mfyf"},
+    {q: 300, rmbp: 80, cadp: 18, sku: "sku_FpkJkMWrGW1wpR"}
 ];
 
 const Price = class extends React.Component {
@@ -79,16 +79,20 @@ const Price = class extends React.Component {
                     <tr>
                         <th><FormattedMessage id="YMBunitprice" /></th>
                         {priceList.map((item, index)=>{
-                            return <td key={index}>¥{item.ymbp}</td>
+                            return <td key={index}>¥{item.rmbp}</td>
                         })}
                     </tr>
                     <tr>
                         <th><FormattedMessage id="YMB" /></th>
                         {priceList.map((item, index)=>{
-                            return (<td key={index} className="cellBuyNow">¥{item.ymbp * item.q}
-                                    <button style={buttonStyles} className="buttonBuyNow"
+                            return (<td key={index} className="cellBuyNow">¥{item.rmbp * item.q}
+                                    {/* <button style={buttonStyles} className="linkBuyNow"
                                         onClick={event => this.redirectToCheckout(event, item)}
-                                    >Buy {item.q} in China</button></td>)
+                                    ><FormattedMessage id="buy" /> {item.q} <FormattedMessage id="inchina" /></button> */}
+                                    <Link style={buttonStyles} className="linkBuyNow" 
+                                        to={"/contact-us?quantity=" + item.q}>
+                                        <FormattedMessage id="buy" /> {item.q} <FormattedMessage id="inchina" /></Link>
+                                    </td>)
                         })}
                     </tr>
                     <tr>
@@ -101,9 +105,14 @@ const Price = class extends React.Component {
                         <th><FormattedMessage id="CAD" /></th>
                         {priceList.map((item, index)=>{
                             return (<td key={index} className="cellBuyNow">${item.cadp * item.q}
-                                    <button style={buttonStyles} className="buttonBuyNow"
+                                    {/* <button style={buttonStyles} className="linkBuyNow"
                                         onClick={event => this.redirectToCheckout(event, item)}
-                                    >Buy {item.q} in Canada</button></td>)
+                                        ><FormattedMessage id="buy" /> {item.q} <FormattedMessage id="incanada" /></button> */}
+                                        <Link style={buttonStyles} className="linkBuyNow" 
+                                        to={"/contact-us?quantity=" + item.q}>
+                                        <FormattedMessage id="buy" /> {item.q} <FormattedMessage id="incanada" />
+                                        </Link>
+                                    </td>)
                         })}
                     </tr>
                 </tbody>

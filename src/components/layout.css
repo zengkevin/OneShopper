@@ -618,5 +618,5 @@ pre tt:after {
 .grid-image {height: auto !important;}
 .cellBuyNow {background-color: #dddddd;}
 .priceTable th {background-color: green; color: white; font-weight: normal;}
-button.buttonBuyNow {display: none;}
-.cellBuyNow:hover > button {display:block;}
+.linkBuyNow {display: none;}
+.cellBuyNow:hover > .linkBuyNow {display:block;}
