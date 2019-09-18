@@ -410,6 +410,8 @@ table {
   line-height: 1.45rem;
   border-collapse: collapse;
   width: 100%;
+
+  border: 2px solid black;
 }
 fieldset {
   margin-left: 0;
@@ -567,6 +569,8 @@ th {
   padding-right: 0.96667rem;
   padding-top: 0.725rem;
   padding-bottom: calc(0.725rem - 1px);
+
+  text-align: center; border: 1px solid black;
 }
 th:first-child,
 td:first-child {
@@ -608,3 +612,11 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.grid-3-col{display: grid; grid-template-columns: auto auto auto; margin: 30px 0;}
+.grid-3-col > div {margin: -15px 0;}
+.grid-image {height: auto !important;}
+.cellBuyNow {background-color: #dddddd;}
+.priceTable th {background-color: green; color: white; font-weight: normal;}
+button.buttonBuyNow {display: none;}
+.cellBuyNow:hover > button {display:block;}

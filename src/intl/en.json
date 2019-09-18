@@ -1,20 +1,11 @@
 {
   "title": "Gatsby English",
-  "latestitems": "Latest Items",
+  "productinfo": "Product Information",
   "home": "Home",
   "blogs": "Blogs",
-  "store": "Store",
-  "about": "About",
+  "product": "Product",
+  "prices": "Prices",
   "contact": "Contact",
-  "description": "Kick off your next, great Gatsby project with this default-starter-intl. This barebones starter ships with the main Gatsby configuration files you might need.",
-  "author": "@wiziple",
-  "hello": "Hi people",
-  "welcome": "Welcome to your new Gatsby site.",
-  "title_page2": "Page two",
-  "hello_page2": "Hi from the second page",
-  "build": "Now go build something great.",
-  "welcome_page2": "Welcome to page 2",
-  "go_back": "Go back to the homepage",
   "notfound": {
     "header": "NOT FOUND",
     "description": "You just hit a route that doesn't exist... the sadness."
@@ -25,5 +16,10 @@
   "message": "Message",
   "send": "Send",
   "all_rights_reserved": "All rights reserved",
-  "latest_blogs": "Latest Blogs"
+  "latest_blogs": "Latest Blogs",
+  "quantity": "Quantity",
+  "YMBunitprice": "YMB Unit Price",
+  "YMB": "YMB",
+  "CADunitprice": "CAD Unit Price",
+  "CAD": "CAD"
 }

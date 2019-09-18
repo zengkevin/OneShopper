@@ -91,7 +91,7 @@ const IndexPage = data => (
   <Layout>
     <SEO
       lang={data.intl.locale}
-      title={data.intl.formatMessage({ id: "store" })}
+      title={data.intl.formatMessage({ id: "product" })}
       keywords={[`gatsby`, `application`, `react`]}
     />
     <div className="container store-page">

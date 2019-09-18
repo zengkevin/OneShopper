@@ -47,9 +47,6 @@ span.price{font-weight:bold;font-size:30px;}
 .Product-Screenshot{position:relative;margin-bottom:30px;}
 .dv-star-rating i{font-size:30px;}
 .buynowinner{margin-bottom:20px;}
-.grid-3-col{display: grid; grid-template-columns: auto auto auto; margin: 30px 0;}
-.grid-3-col > div {margin: -15px 0;}
-.grid-image {height: auto !important;}
 
 /* slider css */
 .slick-slider .slick-list div{display:inline-block;width:100%;text-align:left;}

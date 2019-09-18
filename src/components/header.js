@@ -25,23 +25,23 @@ const Header = ({ siteTitle }) => (
                 <Link className="nav-link" to="/"><FormattedMessage id="home" /></Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/product"><FormattedMessage id="product" /></Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/price"><FormattedMessage id="prices" /></Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/blogs"><FormattedMessage id="blogs" /></Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/store"><FormattedMessage id="store" /></Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about"><FormattedMessage id="about" /></Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/contact-us"><FormattedMessage id="contact" /></Link>
               </li>
             </ul>
-            <div className="header-cart">
+            {/* <div className="header-cart">
               <Link className="Header__summary snipcart-summary snipcart-checkout" to="#">
                 <i className="fas fa-cart-plus"></i>
               </Link>
-            </div>
+            </div> */}
           </nav>
         </div>
         <div className="col-sm-12 col-md-2 align-self-right">

@@ -1,20 +1,11 @@
 {
   "title": "Gatsby 中文",
-  "latestitems": "新产品",
+  "productinfo": "产品信息",
   "home": "首页",
   "blogs": "博客",
-  "store": "商店",
-  "about": "关于我们",
+  "product": "产品",
+  "prices": "统一售价",
   "contact": "联系信息",
-  "description": "이 default-starter-intl 패키지를 사용하여 Gatsby 프로젝트를 시작하십시오. 이 베어 본 스타터는 필요한 Gatsby 주요 구성 파일을 제공합니다.",
-  "author": "@wiziple",
-  "hello": "여러분 안녕하세요",
-  "welcome": "개츠비 사이트에 오신 것을 환영합니다",
-  "title_page2": "2페이지",
-  "hello_page2": "안녕하세요. 2페이지입니다.",
-  "build": "이제 새로운 것을 만들어 보세요.",
-  "welcome_page2": "2페이지 입니다",
-  "go_back": "홈페이지로 가기",
   "notfound": {
     "header": "网页不存在",
     "description": "很遗憾... 您访问的是无效网页！"
@@ -25,5 +16,10 @@
   "message": "内容",
   "send": "提交",
   "all_rights_reserved": "版权所有",
-  "latest_blogs": "最新博客"
+  "latest_blogs": "最新博客",
+  "quantity": "数量",
+  "YMBunitprice": "人民币单价",
+  "YMB": "人民币总价",
+  "CADunitprice": "加元单价",
+  "CAD": "加元总价"
 }

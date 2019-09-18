@@ -1,5 +1,8 @@
-var dotenv = require("dotenv");
-dotenv.config();
+//var dotenv = require("dotenv");
+//dotenv.config();
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const { spaceId, accessToken, snipcart } = process.env;
 
@@ -58,6 +61,15 @@ module.exports = {
         defaultLanguage: `en`,
         // option to redirect to `/en` when connecting `/`
         redirect: true,
+      },
+    },
+    `gatsby-plugin-stripe`,
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ["Sku"],
+        secretKey: process.env.STRIPE_SECRET_KEY,
+        downloadFiles: true,
       },
     },
   ],
